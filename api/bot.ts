@@ -21,7 +21,7 @@ export const bot = new Bot(token, config);
 
 bot.command(
     "start",
-    (ctx) => ctx.reply("I'm running on Vercel using webhook!"),
+    (ctx) => ctx.reply("I'm running on Vercel with TypeScript using webhook!"),
 );
 
 
