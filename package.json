@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": " type:module //  所有 JavaScript 文件都会被视为 ECMAScript 模块",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
