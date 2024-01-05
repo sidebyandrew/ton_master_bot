@@ -19,19 +19,17 @@ if (process.env.NODE_ENV === 'dev') {
     };
 }
 exports.bot = new grammy_1.Bot(token, config);
-exports.bot.command("start", (ctx) => ctx.reply("I'm running on Heroku using long polling!"));
-exports.default = (0, grammy_1.webhookCallback)(exports.bot, "http");
-//
-//
-// let webhookCallbackE = {};
-// if (process.env.NODE_ENV === 'dev') {
-//     bot.start().then((e) => {
-//         console.info(e)
-//     }).catch((e) => {
-//         console.error(e)
-//     });
-// } else {
-//     webhookCallbackE = webhookCallback(bot, "http");
-// }
-//
-// export default webhookCallbackE
+exports.bot.command("start", (ctx) => ctx.reply("I'm running on Vercel using webhook!"));
+// export default webhookCallback(bot, "http");
+let webhookCallbackE = {};
+if (process.env.NODE_ENV === 'dev') {
+    exports.bot.start().then((e) => {
+        console.info(e);
+    }).catch((e) => {
+        console.error(e);
+    });
+}
+else {
+    webhookCallbackE = (0, grammy_1.webhookCallback)(exports.bot, "http");
+}
+exports.default = webhookCallbackE;
