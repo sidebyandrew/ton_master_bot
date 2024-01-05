@@ -4,20 +4,28 @@ import {SocksProxyAgent} from "socks-proxy-agent";
 const token = process.env.BOT_TOKEN;
 if (!token) throw new Error("BOT_TOKEN is unset");
 
-const socksAgent = new SocksProxyAgent("socks://127.0.0.1:7890");
 
+// ===========================================================================
+//                        Bot Init Section Start
+// ===========================================================================
 let config = {};
 if (process.env.NODE_ENV === 'dev') {
     config = {
         client: {
             baseFetchConfig: {
-                agent: socksAgent,
+                agent: new SocksProxyAgent("socks://127.0.0.1:7890"),
                 compress: true,
             },
         },
     }
 }
 export const bot = new Bot(token, config);
+// ===========================================================================
+//                        Bot Init Section End
+// ===========================================================================
+
+
+
 
 bot.command(
     "start",
@@ -25,9 +33,12 @@ bot.command(
 );
 
 
-// export default webhookCallback(bot, "http");
 
-let webhookCallbackE = {};
+
+// ===========================================================================
+//                        Startup Section Start
+// ===========================================================================
+let CallbackExport = {};
 if (process.env.NODE_ENV === 'dev') {
     bot.start().then((e) => {
         console.info(e)
@@ -35,10 +46,13 @@ if (process.env.NODE_ENV === 'dev') {
         console.error(e)
     });
 } else {
-    webhookCallbackE = webhookCallback(bot, "http");
+    CallbackExport = webhookCallback(bot, "http");
 }
 
-export default webhookCallbackE
+export default CallbackExport
+// ===========================================================================
+//                        Startup Section End
+// ===========================================================================
 
 
 
