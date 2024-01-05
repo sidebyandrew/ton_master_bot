@@ -21,26 +21,24 @@ export const bot = new Bot(token, config);
 
 bot.command(
     "start",
-    (ctx) => ctx.reply("I'm running on Heroku using long polling!"),
+    (ctx) => ctx.reply("I'm running on Vercel using webhook!"),
 );
 
 
+// export default webhookCallback(bot, "http");
 
-export default webhookCallback(bot, "http");
-//
-//
-// let webhookCallbackE = {};
-// if (process.env.NODE_ENV === 'dev') {
-//     bot.start().then((e) => {
-//         console.info(e)
-//     }).catch((e) => {
-//         console.error(e)
-//     });
-// } else {
-//     webhookCallbackE = webhookCallback(bot, "http");
-// }
-//
-// export default webhookCallbackE
+let webhookCallbackE = {};
+if (process.env.NODE_ENV === 'dev') {
+    bot.start().then((e) => {
+        console.info(e)
+    }).catch((e) => {
+        console.error(e)
+    });
+} else {
+    webhookCallbackE = webhookCallback(bot, "http");
+}
+
+export default webhookCallbackE
 
 
 
