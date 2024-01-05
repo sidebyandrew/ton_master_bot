@@ -1,4 +1,4 @@
-import {Bot} from "grammy";
+import {Bot, webhookCallback} from "grammy";
 import {SocksProxyAgent} from "socks-proxy-agent";
 
 const token = process.env.BOT_TOKEN;
@@ -24,4 +24,23 @@ bot.command(
     (ctx) => ctx.reply("I'm running on Heroku using long polling!"),
 );
 
-bot.start().then((e) => {console.info(e)}).catch((e) => {console.error(e)});
+
+
+export default webhookCallback(bot, "http");
+//
+//
+// let webhookCallbackE = {};
+// if (process.env.NODE_ENV === 'dev') {
+//     bot.start().then((e) => {
+//         console.info(e)
+//     }).catch((e) => {
+//         console.error(e)
+//     });
+// } else {
+//     webhookCallbackE = webhookCallback(bot, "http");
+// }
+//
+// export default webhookCallbackE
+
+
+
