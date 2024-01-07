@@ -35,13 +35,6 @@ on_message(bot);
 // ===========================================================================
 //                        Startup Section Start
 // ===========================================================================
-// Vercel analysis inject
-try {
-  inject();
-} catch (e) {
-  console.error(e);
-}
-
 let CallbackExport = {};
 if (process.env.NODE_ENV === "dev") {
   // Stopping the bot when the Node.js process

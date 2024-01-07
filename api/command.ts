@@ -1,6 +1,7 @@
 import { Bot } from "grammy";
 import { MyContext } from "./global.types";
 import { Menu, MenuRange } from "@grammyjs/menu";
+import { inject } from "@vercel/analytics";
 
 export function bind_command(bot: Bot<MyContext>) {
   const menu_home = new Menu("menu_home")
