@@ -4,7 +4,8 @@
   "description": " type:module //  所有 JavaScript 文件都会被视为 ECMAScript 模块",
   "main": "index.js",
   "scripts": {
-    "dev": "export BOT_TOKEN=6974828212:AAFZzNoM6Wsv8jI75JsZ8ukbzVuy-CtFvB8 && export NODE_ENV=dev && export DEBUG='grammy*' && nodemon api/bot.ts",
+    "dev_master": "export BOT_TOKEN=6974828212:AAFZzNoM6Wsv8jI75JsZ8ukbzVuy-CtFvB8 && export NODE_ENV=dev && export DEBUG='grammy*' && nodemon api/bot.ts",
+    "dev_openvip": "export BOT_TOKEN=6848653110:AAFuVZe_OBc0zAgoBfpa8mT7SrW0yrC1okE && export NODE_ENV=dev && export DEBUG='grammy*' && nodemon api/bot.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

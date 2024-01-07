@@ -29,7 +29,7 @@ export function bind_command(bot: Bot<MyContext>) {
     .row();
 
   const menu_wallets = new Menu("menu_wallets")
-    .url("Wallet Bot", "https://t.me/wallet")
+    .url("Wallet Bot 🤖", "https://t.me/wallet")
     .row()
     .url("Tonkeeper", "https://www.tonkeeper.com/")
     .row()
@@ -87,10 +87,10 @@ export function bind_command(bot: Bot<MyContext>) {
 
   const menu_dex = new Menu("menu_dex")
 
-    .url("STON.fi Bot", "https://app.ston.fi/swap")
+    .url("STON.fi Bot 🤖", "https://t.me/STONfi_bot")
     .url("STON.fi Web", "https://app.ston.fi/swap")
     .row()
-    .url("Storm Trade Bot", "https://t.me/StormTradeBot")
+    .url("Storm Trade Bot 🤖", "https://t.me/StormTradeBot")
     .url("Storm Trade Web", "https://storm.tg/")
     .row()
     .url("DeDust.io", "https://dedust.io/swap")
@@ -106,9 +106,9 @@ export function bind_command(bot: Bot<MyContext>) {
     .row()
     .url("Orbit Bridge", "https://bridge.orbitchain.io/")
     .row()
-    .url("xRocket Bot", "https://t.me/xrocket")
+    .url("xRocket Bot 🤖", "https://t.me/xrocket")
     .row()
-    .url("CryptoBot", "https://t.me/CryptoBot")
+    .url("CryptoBot 🤖", "https://t.me/CryptoBot")
     .row()
     .url("XP.NETWORK", "https://bridge.xp.network/")
     .row()
@@ -144,11 +144,11 @@ export function bind_command(bot: Bot<MyContext>) {
 
   const menu_games = new Menu("menu_games")
     .url("TON Play", "https://tonplay.io/")
-    .url("TON Play - PlayDeck", "https://t.me/playdeckbot")
+    .url("TON Play - PlayDeck 🤖", "https://t.me/playdeckbot")
     .row()
-    .url("Games Platform", "https://t.me/InstantGames_bot")
+    .url("Games Platfor 🤖m", "https://t.me/InstantGames_bot")
     .row()
-    .url("🍿 Popcoin Games", "https://t.me/ThePopcoinBot")
+    .url("🍿 Popcoin Games 🤖", "https://t.me/ThePopcoinBot")
     .row()
     .back("◀️ Go Back");
 
@@ -165,7 +165,7 @@ export function bind_command(bot: Bot<MyContext>) {
     .back("◀️ Go Back");
 
   const menu_lottery = new Menu("menu_lottery")
-    .url("Jackpot TON Mini-App", "https://t.me/jackpot_ton_bot/Jackpot_ton")
+    .url("Jackpot TON Mini-App 🤖", "https://t.me/jackpot_ton_bot/Jackpot_ton")
     .row()
     .url("Jackpot TON Group", "https://t.me/jackpot_dot_ton")
     .row()
@@ -184,28 +184,28 @@ export function bind_command(bot: Bot<MyContext>) {
     .url("🎖 Tonano #TON20", "https://tonano.io/")
     .row()
     .url("Tonano Group", "https://t.me/tonanoOfficial")
-    .url("Tonano Bot", "https://t.me/TonanoBot")
+    .url("Tonano Bot 🤖", "https://t.me/TonanoBot")
     .row()
     .url("Gram20", "https://gram20.com/")
     .row()
     .url("Gram20 Group", "https://t.me/Gram_Announcement")
-    .url("Gram20 Bot", "https://t.me/gram20bot/app")
+    .url("Gram20 Bot 🤖", "https://t.me/gram20bot/app")
     .row()
     .url("TONOT", "https://tonot.io/")
     .row()
     .url("TONOT Group", "https://t.me/Tonot_ann")
-    .url("TONOT Bot", "https://t.me/tonottg_bot?start=KJKY5JU2")
+    .url("TONOT Bot 🤖", "https://t.me/tonottg_bot?start=KJKY5JU2")
     .row()
     .back("◀️ Go Back");
 
   const menu_utils = new Menu("menu_utils")
-    .url("Crypto Ads Platform Bot", "https://t.me/mycap_bot")
+    .url("Crypto Ads Platform Bot 🤖", "https://t.me/mycap_bot")
     .row()
     .url("Crypto Ads Platform Group", "https://t.me/cap_live")
     .row()
-    .url("Fragment Checker Bot", "https://t.me/fragmentcheckerbot")
+    .url("Fragment Checker Bot 🤖", "https://t.me/fragmentcheckerbot")
     .row()
-    .url("TON Notify Bot", "https://t.me/tonnotifybot")
+    .url("TON Notify Bot 🤖", "https://t.me/tonnotifybot")
     .row()
     .url("Crypto Ads Platform Group", "https://t.me/cap_live")
     .row()
@@ -221,12 +221,15 @@ export function bind_command(bot: Bot<MyContext>) {
     .row()
     .url("TON Smart Contract Verifier", "https://verifier.ton.org/")
     .row()
-    .url("TON Blockchain Testnet Faucet Bot", "https://t.me/testgiver_ton_bot")
+    .url(
+      "TON Blockchain Testnet Faucet Bot 🤖",
+      "https://t.me/testgiver_ton_bot",
+    )
     .row()
     .back("◀️ Go Back");
 
   const menu_settings = new Menu("menu_settings")
-    .url("❤️ Contact Master (Andrew Tonx)", "https://t.me/andrew_tonx")
+    .url("📲 Contact Master (Andrew Tonx)", "https://t.me/andrew_tonx")
     .row()
     .back("◀️ Go Back");
 
@@ -250,9 +253,19 @@ export function bind_command(bot: Bot<MyContext>) {
   bot.use(menu_home);
   bot.command("start", async (ctx) => {
     // ctx.react("🎉").then();
-    await ctx.reply("*TON Master* :  Explore TON ecosystem with pleasure\\!", {
+    ctx
+      .reply("*TON Master* : Explore TON ecosystem with pleasure\\!", {
+        parse_mode: "MarkdownV2",
+        reply_markup: menu_home,
+      })
+      .catch((reason) => {
+        console.error(reason);
+      });
+  });
+
+  bot.command("help", async (ctx) => {
+    ctx.reply("Contact Master [Andrew Tonx](https://t.me/andrew_tonx) ", {
       parse_mode: "MarkdownV2",
-      reply_markup: menu_home,
     });
   });
 }
