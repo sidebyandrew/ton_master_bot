@@ -3,8 +3,6 @@ import { SocksProxyAgent } from "socks-proxy-agent";
 import { bind_command } from "./command";
 import { on_message } from "./message";
 import { use_middleware } from "./ctx.config";
-import { conversations, createConversation } from "@grammyjs/conversations";
-import { use_conv } from "./conv";
 import { MyContext } from "./global.types";
 import { inject } from "@vercel/analytics";
 

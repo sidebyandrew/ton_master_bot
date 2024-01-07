@@ -61,6 +61,7 @@ export function bind_command(bot: Bot<MyContext>) {
     .url("TON Domains", "https://dns.ton.org/")
     .row()
     .url("Getgems Marketplace", "https://getgems.io/")
+    .url("Getgems Bot 🤖", "https://t.me/GetgemsNftBot")
     .row()
     .back("◀️ Go Back");
 
@@ -146,7 +147,7 @@ export function bind_command(bot: Bot<MyContext>) {
     .url("TON Play", "https://tonplay.io/")
     .url("TON Play - PlayDeck 🤖", "https://t.me/playdeckbot")
     .row()
-    .url("Games Platfor 🤖m", "https://t.me/InstantGames_bot")
+    .url("Games Platform 🤖", "https://t.me/InstantGames_bot")
     .row()
     .url("🍿 Popcoin Games 🤖", "https://t.me/ThePopcoinBot")
     .row()
@@ -156,7 +157,7 @@ export function bind_command(bot: Bot<MyContext>) {
     .url("🥇🐳 @Whale", "https://whale.io/?start=56a08af2359db7dd")
     .row()
     .url(
-      "TON Poker",
+      "TON Poker 🤖",
       "https://myTonPokerBot.t.me/?start=afpZWQxNjQ3NzdkNTNkZjZmNzQ1YmMwNmI5Y2JiNjY5MDM",
     )
     .row()
