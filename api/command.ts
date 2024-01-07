@@ -246,6 +246,8 @@ export function bind_command(bot: Bot<MyContext>) {
     .back("◀️ Go Back");
 
   const menu_settings = new Menu("menu_settings")
+    .url("👥 Join User Group", "https://t.me/ton_master_chat")
+    .row()
     .url("📲 Contact Master (Andrew Tonx)", "https://t.me/andrew_tonx")
     .row()
     .back("◀️ Go Back");
