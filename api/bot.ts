@@ -1,9 +1,11 @@
-import {Bot, webhookCallback} from "grammy";
+import {Bot, session, webhookCallback} from "grammy";
 import {SocksProxyAgent} from "socks-proxy-agent";
-
-const token = process.env.BOT_TOKEN;
-if (!token) throw new Error("BOT_TOKEN is unset");
-
+import {bind_command} from "./command";
+import {on_message} from "./message";
+import {use_middleware} from "./ctx.config";
+import {conversations, createConversation} from "@grammyjs/conversations";
+import {use_conv} from "./conv";
+import {MyContext} from "./global.types";
 
 // ===========================================================================
 //                        Bot Init Section Start
@@ -19,20 +21,17 @@ if (process.env.NODE_ENV === 'dev') {
         },
     }
 }
-export const bot = new Bot(token, config);
+const token = process.env.BOT_TOKEN;
+if (!token) throw new Error("BOT_TOKEN is unset");
+export const bot = new Bot<MyContext>(token, config);
 // ===========================================================================
 //                        Bot Init Section End
 // ===========================================================================
 
-
-
-
-bot.command(
-    "start",
-    (ctx) => ctx.reply("I'm running on Vercel with TypeScript using webhook!"),
-);
-
-
+use_middleware(bot)
+bind_command(bot);
+// use_conv(bot);
+on_message(bot);
 
 
 // ===========================================================================
@@ -40,6 +39,10 @@ bot.command(
 // ===========================================================================
 let CallbackExport = {};
 if (process.env.NODE_ENV === 'dev') {
+    // Stopping the bot when the Node.js process
+    // is about to be terminated
+    process.once("SIGINT", () => bot.stop());
+    process.once("SIGTERM", () => bot.stop());
     bot.start().then((e) => {
         console.info(e)
     }).catch((e) => {
