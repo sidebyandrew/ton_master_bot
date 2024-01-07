@@ -21,6 +21,7 @@ export function bind_command(bot: Bot<MyContext>) {
     .submenu("🎫 Lottery", "menu_lottery")
     .row()
     .submenu("🚀 Launchpad", "menu_launchpad")
+    .submenu("🌾 Staking", "menu_staking")
     .submenu("🗿 Inscription", "menu_inscription")
     .row()
     .submenu("🧰 Utils", "menu_utils")
@@ -181,6 +182,19 @@ export function bind_command(bot: Bot<MyContext>) {
     .row()
     .back("◀️ Go Back");
 
+  const menu_staking = new Menu("menu_staking")
+    .url("Ton Stakers", "https://app.tonstakers.com/")
+    .row()
+    .url("Whales Pool", "https://tonwhales.com/mining")
+    .row()
+    .url("TonStake.com", "https://tonstake.com/")
+    .row()
+    .url("Hipo Finance", "https://app.hipo.finance/#/")
+    .row()
+    .url("Ton Stake Lottery", "https://tonstakelottery.com/")
+    .row()
+    .back("◀️ Go Back");
+
   const menu_inscription = new Menu("menu_inscription")
     .url("🎖 Tonano #TON20", "https://tonano.io/")
     .row()
@@ -200,6 +214,8 @@ export function bind_command(bot: Bot<MyContext>) {
     .back("◀️ Go Back");
 
   const menu_utils = new Menu("menu_utils")
+    .url("🎖 TON App - Explore in TON Ecosystem", "https://ton.app/")
+    .row()
     .url("Crypto Ads Platform Bot 🤖", "https://t.me/mycap_bot")
     .row()
     .url("Crypto Ads Platform Group", "https://t.me/cap_live")
@@ -247,6 +263,7 @@ export function bind_command(bot: Bot<MyContext>) {
   menu_home.register(menu_gambling);
   menu_home.register(menu_lottery);
   menu_home.register(menu_launchpad);
+  menu_home.register(menu_staking);
   menu_home.register(menu_inscription);
   menu_home.register(menu_utils);
   menu_home.register(menu_devtools);
