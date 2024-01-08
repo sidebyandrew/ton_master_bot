@@ -34,7 +34,7 @@ export const bot = new Bot<MyContext>(token, config);
 // ===========================================================================
 
 register_config(bot);
-register_i18n(bot);
+// register_i18n(bot);
 bind_command(bot);
 on_message(bot);
 

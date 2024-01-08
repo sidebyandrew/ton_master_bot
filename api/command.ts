@@ -44,7 +44,7 @@ export function bind_command(bot: Bot<MyContext>) {
     .url("Tonhub", "https://mytonwallet.io/")
     .row()
     .back("◀️ Go Back", async (ctx) => {
-      let withPleasure = ctx.t("withPleasure");
+      let withPleasure = "*TON Master* : Explore TON with pleasure\\!";
       await ctx.editMessageText(withPleasure, {
         parse_mode: "MarkdownV2",
       });
@@ -285,7 +285,7 @@ export function bind_command(bot: Bot<MyContext>) {
   bot.use(menu_home);
   bot.command("start", async (ctx) => {
     // ctx.react("🎉").then();
-    let withPleasure = ctx.t("withPleasure");
+    let withPleasure = "*TON Master* : Explore TON with pleasure\\!";
     ctx
       .reply(withPleasure, {
         parse_mode: "MarkdownV2",
