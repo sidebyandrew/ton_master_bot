@@ -1,6 +1,6 @@
 import { Bot } from "grammy";
-import { MyContext } from "./global.types";
 import { Menu, MenuRange } from "@grammyjs/menu";
+import { MyContext } from "../global.types";
 
 export function never_call_me(bot: Bot<MyContext>) {
   const menu_home = new Menu("menu_home");

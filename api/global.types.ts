@@ -1,5 +1,6 @@
 import { Context, SessionFlavor } from "grammy";
 import { Conversation, ConversationFlavor } from "@grammyjs/conversations";
+import { I18nFlavor } from "@grammyjs/i18n";
 
 export type MyConversation = Conversation<MyContext>;
 
@@ -17,6 +18,7 @@ export interface SessionData {
 }
 
 export type MyContext = Context &
+  I18nFlavor &
   ConversationFlavor & {
     config: BotConfig;
   } & SessionFlavor<SessionData>;
