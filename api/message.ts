@@ -21,21 +21,25 @@ export function on_message(bot: Bot<MyContext>) {
         let hex = address.toString(false, true, true);
         let bounceable = address.toString(true, true, true);
         let non_bounceable = address.toString(true, true, false);
-        await ctx.reply(
-          "Find a <i>" +
-            net +
-            "</i> TON address, let me convert it for you.\n\n" +
-            "<b>Bounceable Address:</b>\n" +
-            bounceable +
-            "\n\n<b>Non-Bounceable Address:</b>\n" +
-            non_bounceable +
-            "\n\n<b>HEX Format:</b>\n" +
-            hex,
-          {
-            parse_mode: "HTML",
-            reply_parameters: { message_id: ctx.msg.message_id },
-          },
-        );
+        ctx
+          .reply(
+            "Find a <i>" +
+              net +
+              "</i> TON address, let me convert it for you.\n\n" +
+              "<b>Bounceable Address:</b>\n" +
+              bounceable +
+              "\n\n<b>Non-Bounceable Address:</b>\n" +
+              non_bounceable +
+              "\n\n<b>HEX Format:</b>\n" +
+              hex,
+            {
+              parse_mode: "HTML",
+              reply_parameters: { message_id: ctx.msg.message_id },
+            },
+          )
+          .catch((e) => {
+            console.error(e);
+          });
       }
     }
   });
