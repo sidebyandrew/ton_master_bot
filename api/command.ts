@@ -139,6 +139,8 @@ export function bind_command(bot: Bot<MyContext>) {
     .back("◀️ Go Back");
 
   const menu_social = new Menu("menu_social")
+    .url("💰 Notcoin", "https://t.me/notcoin_bot?start=r_573921_1716399")
+    .row()
     .url("Tonex", "https://tonex.app/")
     .row()
     .url("TON Place", "https://ton.place/")
@@ -225,7 +227,7 @@ export function bind_command(bot: Bot<MyContext>) {
     .row()
     .url("TON Notify Bot 🤖", "https://t.me/tonnotifybot")
     .row()
-    .url("Crypto Ads Platform Group", "https://t.me/cap_live")
+    .url("Connecton VPN", "https://link.connecton.surf/9efa4f3dfa")
     .row()
     .back("◀️ Go Back");
 
