@@ -1,14 +1,22 @@
-import {Context} from "grammy";
-import {Conversation, ConversationFlavor} from "@grammyjs/conversations";
+import { Context, SessionFlavor } from "grammy";
+import { Conversation, ConversationFlavor } from "@grammyjs/conversations";
 
 export type MyConversation = Conversation<MyContext>;
 
-interface BotConfig {
-    botAdminId: number;
-    isDeveloper: boolean;
+export interface BotConfig {
+  botAdminId: number;
+  isDeveloper: boolean;
+}
+export interface Dish {
+  id: string;
+  name: string;
 }
 
+export interface SessionData {
+  favoriteIds: string[];
+}
 
-export type MyContext = Context  & ConversationFlavor & {
+export type MyContext = Context &
+  ConversationFlavor & {
     config: BotConfig;
-};
+  } & SessionFlavor<SessionData>;

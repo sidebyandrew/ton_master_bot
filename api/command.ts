@@ -1,11 +1,17 @@
 import { Bot } from "grammy";
 import { MyContext } from "./global.types";
-import { Menu, MenuRange } from "@grammyjs/menu";
-import { inject } from "@vercel/analytics";
+import { Menu } from "@grammyjs/menu";
 
 export function bind_command(bot: Bot<MyContext>) {
+  let withPleasure = "*TON Master* : Explore TON with pleasure\\!";
+
   const menu_home = new Menu("menu_home")
-    .submenu("💎 Wallets", "menu_wallets")
+    .submenu("💎 Wallets", "menu_wallets", (ctx) => {
+      ctx
+        .editMessageText("Tonkeeper is the TOP 1 wallet for TON.")
+        .then((r) => {});
+    })
+    // .submenu("💎 Wallets", "menu_wallets")
     .submenu("🌎 Explorers", "menu_explorers")
     .submenu("🌇 NFT", "menu_NFT")
     .row()
@@ -39,7 +45,11 @@ export function bind_command(bot: Bot<MyContext>) {
     .row()
     .url("Tonhub", "https://mytonwallet.io/")
     .row()
-    .back("◀️ Go Back");
+    .back("◀️ Go Back", async (ctx) => {
+      await ctx.editMessageText(withPleasure, {
+        parse_mode: "MarkdownV2",
+      });
+    });
 
   const menu_explorers = new Menu("menu_explorers")
     .url("Tonviewer", "https://tonviewer.com/")
@@ -277,7 +287,7 @@ export function bind_command(bot: Bot<MyContext>) {
   bot.command("start", async (ctx) => {
     // ctx.react("🎉").then();
     ctx
-      .reply("*TON Master* : Explore TON ecosystem with pleasure\\!", {
+      .reply(withPleasure, {
         parse_mode: "MarkdownV2",
         reply_markup: menu_home,
       })
