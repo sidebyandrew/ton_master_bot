@@ -6,9 +6,7 @@ export function bind_command(bot: Bot<MyContext>) {
   let withPleasure = "*TON Master* : Explore TON with pleasure\\!";
   const menu_home = new Menu<MyContext>("menu_home")
     .submenu("💎 Wallets", "menu_wallets", (ctx) => {
-      ctx
-        .editMessageText("Tonkeeper is the TOP 1 wallet for TON.")
-        .then((r) => {});
+      ctx.editMessageText("Tonkeeper is the TOP 1 TON wallet.").then((r) => {});
     })
     // .submenu("💎 Wallets", "menu_wallets")
     .submenu("🌎 Explorers", "menu_explorers")
@@ -27,7 +25,15 @@ export function bind_command(bot: Bot<MyContext>) {
     .submenu("🎫 Lottery", "menu_lottery")
     .row()
     .submenu("🚀 Launchpad", "menu_launchpad")
-    .submenu("🌾 Staking", "menu_staking")
+    .submenu("🌾 Staking", "menu_staking", (ctx) => {
+      ctx
+        .editMessageText(
+          "*TonTogether* is the first No loss Prize Saving Protocol on TON Blockchain, revolutionizing the way of saving and winning\\.     " +
+            "  Time limited staking event: [Join now\\!](https://tonup.io/project/TonTogether/)  ",
+          { parse_mode: "MarkdownV2" },
+        )
+        .then((r) => {});
+    })
     .submenu("🗿 Inscription", "menu_inscription")
     .row()
     .submenu("🧰 Utils", "menu_utils")
