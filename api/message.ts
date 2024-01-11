@@ -40,6 +40,8 @@ export function on_message(bot: Bot<MyContext>) {
           .catch((e) => {
             console.error(e);
           });
+      } else {
+        ctx.reply("Make sure to input a valid TON address.").then((r) => {});
       }
     }
   });
