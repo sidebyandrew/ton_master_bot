@@ -1,6 +1,5 @@
 import { Bot } from "grammy";
 import { MyContext } from "./global.types";
-import { Menu } from "@grammyjs/menu";
 import { bind_command_help } from "./command.help";
 import { bind_command_address } from "./command.address";
 import { bind_command_start } from "./command.start";
