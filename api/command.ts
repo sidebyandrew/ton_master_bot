@@ -195,6 +195,11 @@ export function bind_command(bot: Bot<MyContext>) {
     .back("◀️ Go Back");
 
   const menu_staking = new Menu<MyContext>("menu_staking")
+    .url(
+      "⏰$UP TonTogether ⌛Before Feb.10",
+      "https://tonup.io/project/TonTogether/",
+    )
+    .row()
     .url("Ton Stakers", "https://app.tonstakers.com/")
     .row()
     .url("Whales Pool", "https://tonwhales.com/mining")
