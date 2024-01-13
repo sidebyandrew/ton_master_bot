@@ -1,10 +1,7 @@
-import { Bot, session, webhookCallback } from "grammy";
 import { SocksProxyAgent } from "socks-proxy-agent";
-import { bind_command } from "./command";
-import { on_message } from "./message";
 import { MyContext } from "./global.types";
-import { register_config } from "./middleware.ctx.config";
 import { main_entry_point } from "./entrypoint.main";
+import { Bot } from "grammy";
 
 // ===========================================================================
 //                        Bot Init Section Start

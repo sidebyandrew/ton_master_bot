@@ -9,7 +9,7 @@ import { main_entry_point } from "./entrypoint.main";
 // See https://developers.cloudflare.com/workers/platform/environment-variables/#secrets-on-deployed-workers.
 // The BOT_INFO is obtained from `bot.api.getMe()`.
 const bot = new Bot<MyContext>(
-  "6848653110:AAFuVZe_OBc0zAgoBfpa8mT7SrW0yrC1okE",
+  "6974828212:AAFZzNoM6Wsv8jI75JsZ8ukbzVuy-CtFvB8",
 );
 
 // ===========================================================================

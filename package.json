@@ -1,14 +1,11 @@
 {
   "name": "ton_master_bot",
   "version": "1.0.0",
-  "description": " type:module",
-  "main": "index.js",
   "scripts": {
     "start": "wrangler dev",
     "deploy": "wrangler deploy",
     "test": "vitest",
-    "dev_openvip": "export BOT_TOKEN=6848653110:AAFuVZe_OBc0zAgoBfpa8mT7SrW0yrC1okE && export NODE_ENV=dev && export DEBUG='grammy*' && nodemon api/bot.ts",
-    "production_never_use": "export BOT_TOKEN=6974828212:AAFZzNoM6Wsv8jI75JsZ8ukbzVuy-CtFvB8 && export NODE_ENV=dev && export DEBUG='grammy*' && nodemon api/bot.ts"
+    "dev_openvip": "export BOT_TOKEN=6848653110:AAFuVZe_OBc0zAgoBfpa8mT7SrW0yrC1okE && export NODE_ENV=dev && export DEBUG='grammy*' && nodemon src/entrypoint.local.ts"
   },
   "keywords": [],
   "author": "",
