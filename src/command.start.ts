@@ -1,65 +1,46 @@
 import { Bot } from "grammy";
+import { MyContext } from "./global.types";
 import { Menu } from "@grammyjs/menu";
-import { MyContext } from "../global.types";
 
-export function bind_command(bot: Bot<MyContext>) {
-  bot.command("start", async (ctx) => {
-    // ctx.react("🎉").then();
-    let withPleasure = ctx.t("withPleasure");
-    let menu_home = menu_builder(ctx);
-    bot.use(menu_home);
-    ctx
-      .reply(withPleasure, {
-        parse_mode: "MarkdownV2",
-        reply_markup: menu_home,
-      })
-      .catch((reason) => {
-        console.error(reason);
-      });
-  });
-
-  bot.command("help", async (ctx) => {
-    ctx
-      .reply("Contact Master [Andrew Tonx](https://t.me/andrew_tonx) ", {
-        parse_mode: "MarkdownV2",
-      })
-      .catch((e) => {
-        console.error(e);
-      });
-  });
-}
-
-function menu_builder(ctx: MyContext) {
+export function bind_command_start(bot: Bot<MyContext>) {
+  let withPleasure = "*TON Master Go* : Explore TON with pleasure\\!";
   const menu_home = new Menu<MyContext>("menu_home")
-    .submenu(ctx.t("m_wallet"), "menu_wallets", (ctx) => {
-      console.info(ctx.from.language_code);
-      ctx
-        .editMessageText("Tonkeeper is the TOP 1 wallet for TON. ")
+    .submenu("💎 Wallets", "menu_wallets", async (ctx) => {
+      await ctx
+        .editMessageText("Tonkeeper is the Top1 TON wallet.")
         .then((r) => {});
     })
     // .submenu("💎 Wallets", "menu_wallets")
-    .submenu(ctx.t("m_explorers"), "menu_explorers")
-    .submenu(ctx.t("m_nft"), "menu_NFT")
+    .submenu("🌎 Explorers", "menu_explorers")
+    .submenu("🌇 NFT", "menu_NFT")
     .row()
-    .submenu(ctx.t("m_cex"), "menu_cex")
-    .submenu(ctx.t("d_cex"), "menu_dex")
-    .submenu(ctx.t("m_bridges"), "menu_bridges")
+    .submenu("🏦 CEX", "menu_cex")
+    .submenu("⚖️ DEX", "menu_dex")
+    .submenu("🏗 Bridges", "menu_bridges")
     .row()
-    .submenu(ctx.t("m_groups"), "menu_groups")
-    .submenu(ctx.t("m_channels"), "menu_channels")
-    .submenu(ctx.t("m_social"), "menu_social")
+    .submenu("👥 Groups", "menu_groups")
+    .submenu("🗣 Channels", "menu_channels")
+    .submenu("🫂 Social", "menu_social")
     .row()
-    .submenu(ctx.t("m_games"), "menu_games")
-    .submenu(ctx.t("m_gambling"), "menu_gambling")
-    .submenu(ctx.t("m_lottery"), "menu_lottery")
+    .submenu("🎮 Games", "menu_games")
+    .submenu("🎲 Gambling", "menu_gambling")
+    .submenu("🎫 Lottery", "menu_lottery")
     .row()
-    .submenu(ctx.t("m_launchpad"), "menu_launchpad")
-    .submenu(ctx.t("m_staking"), "menu_staking")
-    .submenu(ctx.t("m_inscription"), "menu_inscription")
+    .submenu("🚀 Launchpad", "menu_launchpad")
+    .submenu("🌾 Staking", "menu_staking", (ctx) => {
+      ctx
+        .editMessageText(
+          "*TonTogether* is the first No loss Prize Saving Protocol on TON Blockchain, revolutionizing the way of saving and winning\\.     " +
+            "  Time limited staking event: [Join now\\!](https://tonup.io/project/TonTogether/)  ",
+          { parse_mode: "MarkdownV2" },
+        )
+        .then((r) => {});
+    })
+    .submenu("🗿 Inscription", "menu_inscription")
     .row()
-    .submenu(ctx.t("m_utils"), "menu_utils")
-    .submenu(ctx.t("m_devtools"), "menu_devtools")
-    .submenu(ctx.t("m_settings"), "menu_settings")
+    .submenu("🧰 Utils", "menu_utils")
+    .submenu("🔧 Dev Tools", "menu_devtools")
+    .submenu("⚙️ Settings", "menu_settings")
     .row();
 
   const menu_wallets = new Menu<MyContext>("menu_wallets")
@@ -71,15 +52,10 @@ function menu_builder(ctx: MyContext) {
     .row()
     .url("Tonhub", "https://mytonwallet.io/")
     .row()
-    .back(ctx.t("m_back"), async (ctx) => {
-      let withPleasure = ctx.t("withPleasure");
-      ctx
-        .editMessageText(withPleasure, {
-          parse_mode: "MarkdownV2",
-        })
-        .catch((e) => {
-          console.error("update error when back to home menu" + e.msg);
-        });
+    .back("◀️ Go Back", async (ctx) => {
+      await ctx.editMessageText(withPleasure, {
+        parse_mode: "MarkdownV2",
+      });
     });
 
   const menu_explorers = new Menu<MyContext>("menu_explorers")
@@ -93,7 +69,7 @@ function menu_builder(ctx: MyContext) {
     .row()
     .url("TON Whales", "https://tonwhales.com/explorer")
     .row()
-    .back(ctx.t("m_back"));
+    .back("◀️ Go Back");
 
   const menu_NFT = new Menu<MyContext>("menu_NFT")
     .url("Telegram Numbers", "https://fragment.com/numbers")
@@ -106,7 +82,7 @@ function menu_builder(ctx: MyContext) {
     .url("Getgems Marketplace", "https://getgems.io/")
     .url("Getgems Bot 🤖", "https://t.me/GetgemsNftBot")
     .row()
-    .back(ctx.t("m_back"));
+    .back("◀️ Go Back");
 
   const menu_cex = new Menu<MyContext>("menu_cex")
     .url(
@@ -127,7 +103,7 @@ function menu_builder(ctx: MyContext) {
     .row()
     .url("❤️ Submit your favorite", "https://t.me/andrew_tonx")
     .row()
-    .back(ctx.t("m_back"));
+    .back("◀️ Go Back");
 
   const menu_dex = new Menu<MyContext>("menu_dex")
 
@@ -143,7 +119,7 @@ function menu_builder(ctx: MyContext) {
     .row()
     .url("🦄 Uniswap", "https://app.uniswap.org/swap")
     .row()
-    .back(ctx.t("m_back"));
+    .back("◀️ Go Back");
 
   const menu_bridges = new Menu<MyContext>("menu_bridges")
     .url("🎖 Official TON Bridge ", "https://bridge.ton.org/")
@@ -158,7 +134,7 @@ function menu_builder(ctx: MyContext) {
     .row()
     .url("Layerswap", "https://www.layerswap.io/app")
     .row()
-    .back(ctx.t("m_back"));
+    .back("◀️ Go Back");
 
   const menu_groups = new Menu<MyContext>("menu_groups")
     .url("百元幣雷針💎Chat", "https://t.me/alphatonchat")
@@ -169,7 +145,7 @@ function menu_builder(ctx: MyContext) {
     .row()
     .url("TON Dev Chat (中文)", "https://t.me/tondev_zh")
     .row()
-    .back(ctx.t("m_back"));
+    .back("◀️ Go Back");
 
   const menu_channels = new Menu<MyContext>("menu_channels")
     .url("AlphaTon", "https://t.me/alphaton")
@@ -177,7 +153,7 @@ function menu_builder(ctx: MyContext) {
     .url("TON x Fans (CH)", "https://t.me/tonx_news")
     .row()
     .url("TON Jobs", "https://t.me/tonhunt")
-    .back(ctx.t("m_back"));
+    .back("◀️ Go Back");
 
   const menu_social = new Menu<MyContext>("menu_social")
     .url("💰 Notcoin", "https://t.me/notcoin_bot?start=r_573921_1716399")
@@ -186,7 +162,7 @@ function menu_builder(ctx: MyContext) {
     .row()
     .url("TON Place", "https://ton.place/")
     .row()
-    .back(ctx.t("m_back"));
+    .back("◀️ Go Back");
 
   const menu_games = new Menu<MyContext>("menu_games")
     .url("TON Play", "https://tonplay.io/")
@@ -196,7 +172,7 @@ function menu_builder(ctx: MyContext) {
     .row()
     .url("🍿 Popcoin Games 🤖", "https://t.me/ThePopcoinBot")
     .row()
-    .back(ctx.t("m_back"));
+    .back("◀️ Go Back");
 
   const menu_gambling = new Menu<MyContext>("menu_gambling")
     .url("🥇🐳 @Whale", "https://whale.io/?start=56a08af2359db7dd")
@@ -208,14 +184,14 @@ function menu_builder(ctx: MyContext) {
     .row()
     .url("JetTon Games", "https://jetton.games/")
     .row()
-    .back(ctx.t("m_back"));
+    .back("◀️ Go Back");
 
   const menu_lottery = new Menu<MyContext>("menu_lottery")
     .url("Jackpot TON Mini-App 🤖", "https://t.me/jackpot_ton_bot/Jackpot_ton")
     .row()
     .url("Jackpot TON Group", "https://t.me/jackpot_dot_ton")
     .row()
-    .back(ctx.t("m_back"));
+    .back("◀️ Go Back");
 
   const menu_launchpad = new Menu<MyContext>("menu_launchpad")
     .url("🎖 TONUP", "https://tonup.io/")
@@ -224,9 +200,14 @@ function menu_builder(ctx: MyContext) {
     .row()
     .url("Gagarin World", "https://ton.gagarin.world/ru")
     .row()
-    .back(ctx.t("m_back"));
+    .back("◀️ Go Back");
 
   const menu_staking = new Menu<MyContext>("menu_staking")
+    .url(
+      "⏰$UP TonTogether ⌛Before Feb.10",
+      "https://tonup.io/project/TonTogether/",
+    )
+    .row()
     .url("Ton Stakers", "https://app.tonstakers.com/")
     .row()
     .url("Whales Pool", "https://tonwhales.com/mining")
@@ -237,7 +218,7 @@ function menu_builder(ctx: MyContext) {
     .row()
     .url("Ton Stake Lottery", "https://tonstakelottery.com/")
     .row()
-    .back(ctx.t("m_back"));
+    .back("◀️ Go Back");
 
   const menu_inscription = new Menu<MyContext>("menu_inscription")
     .url("🎖 Tonano #TON20", "https://tonano.io/")
@@ -255,7 +236,7 @@ function menu_builder(ctx: MyContext) {
     .url("TONOT Group", "https://t.me/Tonot_ann")
     .url("TONOT Bot 🤖", "https://t.me/tonottg_bot?start=KJKY5JU2")
     .row()
-    .back(ctx.t("m_back"));
+    .back("◀️ Go Back");
 
   const menu_utils = new Menu<MyContext>("menu_utils")
     .url("🎖 TON App - Explore in TON Ecosystem", "https://ton.app/")
@@ -270,7 +251,7 @@ function menu_builder(ctx: MyContext) {
     .row()
     .url("Connecton VPN", "https://link.connecton.surf/9efa4f3dfa")
     .row()
-    .back(ctx.t("m_back"));
+    .back("◀️ Go Back");
 
   const menu_devtools = new Menu<MyContext>("menu_devtools")
 
@@ -287,33 +268,43 @@ function menu_builder(ctx: MyContext) {
       "https://t.me/testgiver_ton_bot",
     )
     .row()
-    .back(ctx.t("m_back"));
+    .back("◀️ Go Back");
 
   const menu_settings = new Menu<MyContext>("menu_settings")
     .url("👥 Join User Group", "https://t.me/ton_master_chat")
     .row()
     .url("📲 Contact Master (Andrew Tonx)", "https://t.me/andrew_tonx")
     .row()
-    .back(ctx.t("m_back"));
+    .back("◀️ Go Back");
 
-  // menu_home.register(menu_wallets);
-  // menu_home.register(menu_explorers);
-  // menu_home.register(menu_NFT);
-  // menu_home.register(menu_cex);
-  // menu_home.register(menu_dex);
-  // menu_home.register(menu_bridges);
-  // menu_home.register(menu_groups);
-  // menu_home.register(menu_channels);
-  // menu_home.register(menu_social);
-  // menu_home.register(menu_games);
-  // menu_home.register(menu_gambling);
-  // menu_home.register(menu_lottery);
-  // menu_home.register(menu_launchpad);
-  // menu_home.register(menu_staking);
-  // menu_home.register(menu_inscription);
-  // menu_home.register(menu_utils);
-  // menu_home.register(menu_devtools);
-  // menu_home.register(menu_settings);
-
-  return menu_home;
+  menu_home.register(menu_wallets);
+  menu_home.register(menu_explorers);
+  menu_home.register(menu_NFT);
+  menu_home.register(menu_cex);
+  menu_home.register(menu_dex);
+  menu_home.register(menu_bridges);
+  menu_home.register(menu_groups);
+  menu_home.register(menu_channels);
+  menu_home.register(menu_social);
+  menu_home.register(menu_games);
+  menu_home.register(menu_gambling);
+  menu_home.register(menu_lottery);
+  menu_home.register(menu_launchpad);
+  menu_home.register(menu_staking);
+  menu_home.register(menu_inscription);
+  menu_home.register(menu_utils);
+  menu_home.register(menu_devtools);
+  menu_home.register(menu_settings);
+  bot.use(menu_home);
+  bot.command("start", async (ctx) => {
+    // ctx.react("🎉").then();
+    await ctx
+      .reply(withPleasure, {
+        parse_mode: "MarkdownV2",
+        reply_markup: menu_home,
+      })
+      .catch((reason) => {
+        console.error(reason);
+      });
+  });
 }

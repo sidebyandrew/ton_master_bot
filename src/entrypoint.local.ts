@@ -3,10 +3,8 @@ import { SocksProxyAgent } from "socks-proxy-agent";
 import { bind_command } from "./command";
 import { on_message } from "./message";
 import { MyContext } from "./global.types";
-import { inject } from "@vercel/analytics";
-import { I18n } from "@grammyjs/i18n";
 import { register_config } from "./middleware.ctx.config";
-import { register_i18n } from "./middleware.i18n";
+import { main_entry_point } from "./entrypoint.main";
 
 // ===========================================================================
 //                        Bot Init Section Start
@@ -32,12 +30,7 @@ export const bot = new Bot<MyContext>(token, config);
 // ===========================================================================
 //                        Main Start
 // ===========================================================================
-
-register_config(bot);
-// register_i18n(bot);
-bind_command(bot);
-on_message(bot);
-
+main_entry_point(bot);
 // ###########################################################################
 //                        Main End
 // ###########################################################################
@@ -45,25 +38,16 @@ on_message(bot);
 // ===========================================================================
 //                        Startup Section Start
 // ===========================================================================
-let CallbackExport = {};
-if (process.env.NODE_ENV === "dev") {
-  // Stopping the bot when the Node.js process
-  // is about to be terminated
-  process.once("SIGINT", () => bot.stop());
-  process.once("SIGTERM", () => bot.stop());
-  bot
-    .start()
-    .then((e) => {
-      console.info(e);
-    })
-    .catch((e) => {
-      console.error(e);
-    });
-} else {
-  CallbackExport = webhookCallback(bot, "http");
-}
-
-export default CallbackExport;
+process.once("SIGINT", () => bot.stop());
+process.once("SIGTERM", () => bot.stop());
+bot
+  .start()
+  .then((e) => {
+    console.info(e);
+  })
+  .catch((e) => {
+    console.error(e);
+  });
 // ###########################################################################
 //                        Startup Section End
 // ###########################################################################

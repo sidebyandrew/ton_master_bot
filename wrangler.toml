@@ -1,0 +1,6 @@
+# @OpenVipBot d96a38e52c83fcffe44f947b1d476a4f
+account_id = 'd96a38e52c83fcffe44f947b1d476a4f'
+name = "tonmasterbot"
+main = "src/entrypoint.cloudflare.ts"
+node_compat = true
+compatibility_date = "2024-01-12"

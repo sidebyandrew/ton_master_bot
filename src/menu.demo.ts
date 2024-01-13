@@ -31,10 +31,10 @@ export function menuDemo(bot: Bot<MyContext>) {
         .submenu(
           { text: dish.name, payload: dish.id }, // label and payload
           "dish", // navigation target menu
-          (ctx) =>
-            ctx.editMessageText(dishText(dish.name), {
-              parse_mode: "HTML",
-            }), // handler
+          async (ctx) =>
+              await ctx.editMessageText(dishText(dish.name), {
+                parse_mode: "HTML",
+              }), // handler
         )
         .row();
     }
@@ -54,15 +54,15 @@ export function menuDemo(bot: Bot<MyContext>) {
     return new MenuRange<MyContext>()
       .text(
         {
-          text: (ctx) =>
-            ctx.session.favoriteIds.includes(dish) ? "Yummy!" : "Meh.",
+          text: async (ctx) =>
+              await ctx.session.favoriteIds.includes(dish) ? "Yummy!" : "Meh.",
           payload: dish,
         },
-        (ctx) => {
+        async (ctx) => {
           const set = new Set(ctx.session.favoriteIds);
           if (!set.delete(dish)) set.add(dish);
           ctx.session.favoriteIds = Array.from(set.values());
-          ctx.menu.update();
+          await ctx.menu.update();
         },
       )
       .row()
@@ -77,8 +77,8 @@ export function menuDemo(bot: Bot<MyContext>) {
 
   mainMenu.register(dishMenu);
   bot.use(mainMenu);
-  bot.command("start", (ctx) =>
-    ctx.reply(mainText, { reply_markup: mainMenu }),
+  bot.command("start", async (ctx) =>
+      await ctx.reply(mainText, {reply_markup: mainMenu}),
   );
 
   bot.catch(console.error.bind(console));

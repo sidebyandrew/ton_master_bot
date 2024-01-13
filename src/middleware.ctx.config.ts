@@ -6,7 +6,6 @@ export function register_config(bot: Bot<MyContext>) {
 
   let middleware_config = async (ctx: MyContext, next: NextFunction) => {
     const before = Date.now();
-    // 只有当用到 ctx.config 时，这段代码才执行？？？？
     ctx.config = {
       botAdminId: BOT_DEVELOPER,
       isDeveloper: ctx.from?.id === BOT_DEVELOPER,
