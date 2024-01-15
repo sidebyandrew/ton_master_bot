@@ -1,23 +1,32 @@
-import { Bot, webhookCallback } from "grammy";
-import { MyContext } from "./global.types";
-import { register_config } from "./middleware.ctx.config";
-import { bind_command } from "./command";
-import { on_message } from "./message";
+import { Bot, webhookCallback } from "grammy/web";
+import Env from "./env.cloudflare";
 import { main_entry_point } from "./entrypoint.main";
+import { MyContext } from "./global.types";
 
-// The following line of code assumes that you have configured the secrets BOT_TOKEN and BOT_INFO.
-// See https://developers.cloudflare.com/workers/platform/environment-variables/#secrets-on-deployed-workers.
-// The BOT_INFO is obtained from `bot.api.getMe()`.
-const bot = new Bot<MyContext>(
-  "6974828212:AAFZzNoM6Wsv8jI75JsZ8ukbzVuy-CtFvB8",
-);
+export default {
+  async fetch(req: Request, env: Env): Promise<Response> {
+    const bot = new Bot<MyContext>(env.TELEGRAM_BOT_API_TOKEN);
+    main_entry_point(bot);
+    return webhookCallback(bot, "cloudflare-mod", {
+      secretToken: env.TELEGRAM_BOT_SECRET_TOKEN,
+    })(req);
+  },
+};
 
-// ===========================================================================
-//                        Main Start
-// ===========================================================================
-main_entry_point(bot);
-// ###########################################################################
-//                        Main End
-// ###########################################################################
-
-addEventListener("fetch", webhookCallback(bot, "cloudflare"));
+//
+// export default {
+//   async fetch(req: Request, env: Env): Promise<Response> {
+//     if (
+//       req.headers.get("x-telegram-bot-api-secret-token") ===
+//       env.TELEGRAM_BOT_SECRET_TOKEN
+//     ) {
+//       const bot = new Bot(env.TELEGRAM_BOT_API_TOKEN);
+//       await handleBotUpdate(bot, env);
+//       return webhookCallback(bot, "cloudflare-mod", {
+//         secretToken: env.TELEGRAM_BOT_SECRET_TOKEN,
+//       })(req);
+//     }
+//
+//     return handleNonBotRequest(req, env);
+//   },
+// };

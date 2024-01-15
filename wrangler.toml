@@ -1,6 +1,15 @@
 # @OpenVipBot d96a38e52c83fcffe44f947b1d476a4f
 account_id = 'd96a38e52c83fcffe44f947b1d476a4f'
-name = "tonmasterbot"
+name = "ton-master-bot"
 main = "src/entrypoint.cloudflare.ts"
 node_compat = true
 compatibility_date = "2024-01-12"
+vars = { ENVIRONMENT = "local", TELEGRAM_BOT_API_TOKEN = "6560316374:AAHkcqknBtL3vTFgBpPhlp2HjJs5kOF9vNg"  }
+
+
+[env.openvip]
+vars = { ENVIRONMENT = "openvip", TELEGRAM_BOT_API_TOKEN = "6848653110:AAFuVZe_OBc0zAgoBfpa8mT7SrW0yrC1okE" }
+
+
+[env.tonmaster]
+vars = { ENVIRONMENT = "tonmaster", TELEGRAM_BOT_API_TOKEN = "6848653110" }

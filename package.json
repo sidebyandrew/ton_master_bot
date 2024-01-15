@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "start": "wrangler dev",
-    "deploy": "wrangler deploy",
+    "deploy_dev": "wrangler deploy",
+    "deploy_openvip": "wrangler deploy --env openvip",
+    "deploy_tonmaster": "wrangler deploy --env tonmaster",
     "test": "vitest",
     "dev_openvip": "export BOT_TOKEN=6848653110:AAFuVZe_OBc0zAgoBfpa8mT7SrW0yrC1okE && export NODE_ENV=dev && export DEBUG='grammy*' && nodemon src/entrypoint.local.ts"
   },
