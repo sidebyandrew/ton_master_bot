@@ -4,12 +4,12 @@ name = "ton-master-bot"
 main = "src/entrypoint.cloudflare.ts"
 node_compat = true
 compatibility_date = "2024-01-12"
-vars = { ENVIRONMENT = "local", TELEGRAM_BOT_API_TOKEN = "6560316374:AAHkcqknBtL3vTFgBpPhlp2HjJs5kOF9vNg"  }
+vars = { ENVIRONMENT = "local", TELEGRAM_BOT_API_TOKEN = "6560316374:AAHkcqknBtL3vTFgBpPhlp2HjJs5kOF9vNg", TELEGRAM_BOT_SECRET_TOKEN = "tonmasterbotv1" }
 
 
 [env.openvip]
-vars = { ENVIRONMENT = "openvip", TELEGRAM_BOT_API_TOKEN = "6848653110:AAFuVZe_OBc0zAgoBfpa8mT7SrW0yrC1okE" }
+vars = { ENVIRONMENT = "openvip", TELEGRAM_BOT_API_TOKEN = "6848653110:AAFuVZe_OBc0zAgoBfpa8mT7SrW0yrC1okE", TELEGRAM_BOT_SECRET_TOKEN = "tonmasterbotv1" }
 
 
 [env.tonmaster]
-vars = { ENVIRONMENT = "tonmaster", TELEGRAM_BOT_API_TOKEN = "6848653110" }
+vars = { ENVIRONMENT = "tonmaster", TELEGRAM_BOT_API_TOKEN = "6974828212:AAFZzNoM6Wsv8jI75JsZ8ukbzVuy-CtFvB8", TELEGRAM_BOT_SECRET_TOKEN = "tonmasterbotv1" }

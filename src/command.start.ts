@@ -3,7 +3,7 @@ import { MyContext } from "./global.types";
 import { Menu } from "@grammyjs/menu";
 
 export function bind_command_start(bot: Bot<MyContext>) {
-  let withPleasure = "*TON Master Go* : Explore TON with pleasure\\!";
+  let withPleasure = "*TON Master Bot* : Explore TON with pleasure\\!";
   const menu_home = new Menu<MyContext>("menu_home")
     .submenu("💎 Wallets", "menu_wallets", async (ctx) => {
       await ctx
@@ -273,7 +273,7 @@ export function bind_command_start(bot: Bot<MyContext>) {
   const menu_settings = new Menu<MyContext>("menu_settings")
     .url("👥 Join User Group", "https://t.me/ton_master_chat")
     .row()
-    .url("📲 Contact Master (Andrew Tonx)", "https://t.me/andrew_tonx")
+    .url("📲 Contact Developer (Andrew Tonx)", "https://t.me/andrew_tonx")
     .row()
     .back("◀️ Go Back");
 

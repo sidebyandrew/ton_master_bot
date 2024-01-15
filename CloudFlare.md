@@ -7,6 +7,27 @@
 - cloudflare-mod
 
 
+[Cloudflare Workers 现已支持 JavaScript 模块](https://blog.cloudflare.com/zh-cn/workers-javascript-modules-zh-cn/)
+
+```javascript
+// 旧的 “Service Worker”API 模式
+addEventListener("fetch", (event) => {
+  event.respondWith(new Response("Hello Worker!"));
+}
+
+```
+
+```javascript
+// 新的 JavaScript 模块也称为 ECMAScript（缩略为“ES”）模块 模式
+export default {
+  async fetch(request, environment, context) {
+    return new Response("I’m a module!");
+  },
+  async scheduled(controller, environment, context) {
+    // await doATask();
+  }
+}
+```
 
 
 # 相关产品
