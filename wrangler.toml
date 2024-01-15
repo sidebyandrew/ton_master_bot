@@ -4,7 +4,7 @@ name = "ton-master-bot"
 main = "src/entrypoint.cloudflare.ts"
 node_compat = true
 compatibility_date = "2024-01-12"
-vars = { ENVIRONMENT = "local", TELEGRAM_BOT_API_TOKEN = "6560316374:AAHkcqknBtL3vTFgBpPhlp2HjJs5kOF9vNg", TELEGRAM_BOT_SECRET_TOKEN = "tonmasterbotv1" }
+vars = { ENVIRONMENT = "local", TELEGRAM_BOT_API_TOKEN = "NO NEED LOCAL", TELEGRAM_BOT_SECRET_TOKEN = "tonmasterbotv1" }
 
 
 [env.openvip]

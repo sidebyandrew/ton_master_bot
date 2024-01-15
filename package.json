@@ -2,12 +2,13 @@
   "name": "ton_master_bot",
   "version": "1.0.0",
   "scripts": {
-    "start": "wrangler dev",
+    "dev_DevTonMasterBot": "@DevTonMasterBot 6913454221:AAEEZK6b1gfNl079JOKuONVS3yTo5ejoaB8",
+    "run_dev": "export BOT_TOKEN=6913454221:AAEEZK6b1gfNl079JOKuONVS3yTo5ejoaB8 && export NODE_ENV=dev && export DEBUG='grammy*' && nodemon src/entrypoint.local.ts",
+    "wrangler_dev": "wrangler dev",
     "deploy_dev": "wrangler deploy",
     "deploy_openvip": "wrangler deploy --env openvip",
     "deploy_tonmaster": "wrangler deploy --env tonmaster",
-    "test": "vitest",
-    "dev_openvip": "export BOT_TOKEN=6848653110:AAFuVZe_OBc0zAgoBfpa8mT7SrW0yrC1okE && export NODE_ENV=dev && export DEBUG='grammy*' && nodemon src/entrypoint.local.ts"
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",
