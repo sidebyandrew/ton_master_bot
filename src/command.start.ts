@@ -271,6 +271,11 @@ export function bind_command_start(bot: Bot<MyContext>) {
     .back("◀️ Go Back");
 
   const menu_settings = new Menu<MyContext>("menu_settings")
+    .url(
+      "🌟Add TON Master Bot To Your Group",
+      "https://t.me/@ton_master_bot?startgroup=yes&admin=admin",
+    )
+    .row()
     .url("👥 Join User Group", "https://t.me/ton_master_chat")
     .row()
     .url("📲 Contact Developer (Andrew Tonx)", "https://t.me/andrew_tonx")
