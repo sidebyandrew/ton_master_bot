@@ -38,6 +38,9 @@ main_entry_point(bot);
 process.once("SIGINT", () => bot.stop());
 process.once("SIGTERM", () => bot.stop());
 bot
+  //   telegram bot update type full list
+  //   https://core.telegram.org/bots/api#update
+  // .start({ allowed_updates: ["message", "chat_member"] })
   .start()
   .then((e) => {
     console.info(e);
