@@ -221,7 +221,16 @@ export function bind_command_start(bot: Bot<MyContext>) {
     .back("◀️ Go Back");
 
   const menu_inscription = new Menu<MyContext>("menu_inscription")
-    .url("🎖 Tonano #TON20", "https://tonano.io/")
+    .url("🔥 TBRC Twitter", "https://twitter.com/tbrc_ton")
+    .row()
+    .url("TBRC Channel", "https://t.me/tbrc_ton")
+    .row()
+    .url(
+      "TEP-0142: TBRC-20 Inscription Token Standard",
+      "https://github.com/lcnx/TEPs/blob/master/text/0142-tbrc20-inscription-standard.md",
+    )
+    .row()
+    .url("Tonano #TON20", "https://tonano.io/")
     .row()
     .url("Tonano Group", "https://t.me/tonanoOfficial")
     .url("Tonano Bot 🤖", "https://t.me/TonanoBot")
