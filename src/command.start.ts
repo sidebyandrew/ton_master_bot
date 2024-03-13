@@ -221,24 +221,34 @@ export function bind_command_start(bot: Bot<MyContext>) {
     .back("◀️ Go Back");
 
   const menu_inscription = new Menu<MyContext>("menu_inscription")
-    .url("🔥 TBRC Twitter", "https://twitter.com/tbrc_ton")
+    .url("TBRC Official Website", "https://tbrc.app/")
     .row()
-    .url("TBRC Channel", "https://t.me/tbrc_ton")
+    .url("TBRC Bot 🤖", "https://t.me/tbrc_ton_bot")
+    .url("TBRC Twitter 𝕏 ", "https://twitter.com/tbrc_ton")
     .row()
+    .url("📣TBRC Announcement Channel", "https://t.me/tbrc_ton")
+    .row()
+
     .url(
       "TEP-0142: TBRC-20 Inscription Token Standard",
       "https://github.com/lcnx/TEPs/blob/master/text/0142-tbrc20-inscription-standard.md",
     )
+    .row()
+    .url(" 🗿🗿🗿 ", "https://t.me/ton_master_bot")
     .row()
     .url("Tonano #TON20", "https://tonano.io/")
     .row()
     .url("Tonano Group", "https://t.me/tonanoOfficial")
     .url("Tonano Bot 🤖", "https://t.me/TonanoBot")
     .row()
+    .url(" 🗿🗿🗿 ", "https://t.me/ton_master_bot")
+    .row()
     .url("Gram20", "https://gram20.com/")
     .row()
     .url("Gram20 Group", "https://t.me/Gram_Announcement")
     .url("Gram20 Bot 🤖", "https://t.me/gram20bot/app")
+    .row()
+    .url(" 🗿🗿🗿 ", "https://t.me/ton_master_bot")
     .row()
     .url("TONOT", "https://tonot.io/")
     .row()
